@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RentMyStuff.Core\RentMyStuff.Core.csproj" />
+    <ProjectReference Include="..\RentMyStuff.Data\RentMyStuff.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using RentMyStuff.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace RentMyStuff
 {
@@ -41,6 +42,7 @@ namespace RentMyStuff
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
