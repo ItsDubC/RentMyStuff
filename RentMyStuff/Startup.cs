@@ -13,6 +13,10 @@ using RentMyStuff.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using RentMyStuff.Services.Interfaces;
+using RentMyStuff.Core.Models;
+using RentMyStuff.Services;
+using RentMyStuff.Data.Interfaces;
 
 namespace RentMyStuff
 {
@@ -43,6 +47,9 @@ namespace RentMyStuff
 
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IDbContext, ApplicationDbContext>();
+            services.AddScoped<IService<Asset>, AssetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

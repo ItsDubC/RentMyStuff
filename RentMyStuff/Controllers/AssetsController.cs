@@ -23,7 +23,7 @@ namespace RentMyStuff.Web.Controllers
         }
 
         // GET: Assets
-        public ActionResult Index()
+        public ViewResult Index()
         {
             var assetDtos = _assetService.GetAll().Select(Mapper.Map<Asset, AssetDto>);
             return View(assetDtos);
