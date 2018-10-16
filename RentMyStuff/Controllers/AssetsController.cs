@@ -16,11 +16,13 @@ namespace RentMyStuff.Web.Controllers
     public class AssetsController : Controller
     {
         private IService<Asset> _assetService;
+		private IService<AssetType> _assetTypeService;
 
-        public AssetsController(IService<Asset> assetService)
+		public AssetsController(IService<Asset> assetService, IService<AssetType> assetTypeService)
         {
             _assetService = assetService;
-        }
+			_assetTypeService = assetTypeService;
+		}
 
         // GET: Assets
         public ViewResult Index()
@@ -38,7 +40,15 @@ namespace RentMyStuff.Web.Controllers
         // GET: Assets/Create
         public ActionResult Create()
         {
-            return View();
+			var assetTypes = _assetTypeService.GetAll();
+
+			var viewModel = new AssetFormViewModel()
+			{
+				AssetTypes = assetTypes,
+				Asset = new Asset()
+			};
+
+            return View(viewModel);
         }
 
         // POST: Assets/Create
