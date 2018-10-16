@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using RentMyStuff.Core.Dtos;
+using RentMyStuff.Core.Models;
+
+namespace RentMyStuff.Web
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            CreateMap<Asset, AssetDto>();
+            CreateMap<AssetDto, Asset>().ForMember(x => x.Id, opt => opt.Ignore());
+        }
+    }
+}

@@ -44,7 +44,7 @@ namespace RentMyStuff.Services
 
         public IEnumerable<Asset> GetAll()
         {
-            return _context.Assets.ToList();
+            return _context.Assets.Include(x => x.AssetType).ToList();
         }
 
         public async Task<IEnumerable<Asset>> GetAllAsync()

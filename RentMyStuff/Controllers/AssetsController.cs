@@ -4,15 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RentMyStuff.Core;
+using RentMyStuff.Core.Models;
+using RentMyStuff.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using RentMyStuff.Core.Dtos;
 
 namespace RentMyStuff.Web.Controllers
 {
     public class AssetsController : Controller
     {
+        private IService<Asset> _assetService;
+
+        public AssetsController(IService<Asset> assetService)
+        {
+            _assetService = assetService;
+        }
+
         // GET: Assets
         public ActionResult Index()
         {
-            return View();
+            var assetDtos = _assetService.GetAll().Select(Mapper.Map<Asset, AssetDto>);
+            return View(assetDtos);
         }
 
         // GET: Assets/Details/5
