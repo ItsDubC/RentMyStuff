@@ -10,6 +10,7 @@ using RentMyStuff.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using RentMyStuff.Core.Dtos;
+using RentMyStuff.Web.ViewModels;
 
 namespace RentMyStuff.Web.Controllers
 {
@@ -38,7 +39,21 @@ namespace RentMyStuff.Web.Controllers
         // GET: Assets/Create
         public ActionResult Create()
         {
-            return View();
+			var assetTypes = new List<AssetType>
+			{
+				new AssetType { Id = 0, Name = "Movie" },
+				new AssetType { Id = 1, Name = "CD" },
+				new AssetType { Id = 2, Name = "Tool" },
+				new AssetType { Id = 3, Name = "Power Tool" }
+			};
+
+			var viewModel = new AssetFormViewModel()
+			{
+				AssetTypes = assetTypes,
+				Asset = new Asset()
+			};
+
+            return View(viewModel);
         }
 
         // POST: Assets/Create
