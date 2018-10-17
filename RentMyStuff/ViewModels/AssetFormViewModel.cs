@@ -1,4 +1,4 @@
-﻿using RentMyStuff.Core.Models;
+﻿using RentMyStuff.Core.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace RentMyStuff.Web.ViewModels
 {
     public class AssetFormViewModel
     {
-        public IEnumerable<AssetType> AssetTypes { get; set; }
-        public Asset Asset { get; set; }
+        public IEnumerable<AssetTypeDto> AssetTypes { get; set; }
+        public AssetDto Asset { get; set; }
     }
 }

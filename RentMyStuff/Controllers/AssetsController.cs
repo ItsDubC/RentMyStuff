@@ -45,8 +45,8 @@ namespace RentMyStuff.Web.Controllers
 
 			var viewModel = new AssetFormViewModel()
 			{
-				AssetTypes = assetTypes,
-				Asset = new Asset()
+				AssetTypes = assetTypes.Select(Mapper.Map<AssetType, AssetTypeDto>),
+				Asset = new AssetDto()
 			};
 
             return View(viewModel);
@@ -55,11 +55,37 @@ namespace RentMyStuff.Web.Controllers
         // POST: Assets/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Save(AssetDto assetDto)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new AssetFormViewModel
+                {
+                    AssetTypes = _assetTypeService.GetAll().Select(Mapper.Map<AssetType, AssetTypeDto>),
+                    Asset = assetDto
+                };
+
+                return View("Create", viewModel);
+            }
             try
             {
                 // TODO: Add insert logic here
+                if (assetDto.Id == 0)
+                {
+                    assetDto.NumberAvailable = assetDto.NumberInStock;
+
+                    _assetService.Add(Mapper.Map<AssetDto, Asset>(assetDto));
+                }
+                else
+                {
+                    var assetInDb = _assetService.GetById(assetDto.Id);
+
+                    assetInDb.Name = assetDto.Name;
+                    assetInDb.Description = assetDto.Description;
+                    assetInDb.AssetTypeId = assetDto.AssetTypeId;
+                    assetInDb.NumberInStock = assetDto.NumberInStock;
+                }
+
 
                 return RedirectToAction(nameof(Index));
             }

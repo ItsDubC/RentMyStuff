@@ -3,6 +3,7 @@ using RentMyStuff.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RentMyStuff.Data.Interfaces
 {
@@ -12,5 +13,6 @@ namespace RentMyStuff.Data.Interfaces
         DbSet<Asset> Assets { get; set; }
 
         int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

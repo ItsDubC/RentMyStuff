@@ -26,9 +26,11 @@ namespace RentMyStuff.Services
             return entity;
         }
 
-        public Task<Asset> AddAsync(Asset entity)
+        public async Task<Asset> AddAsync(Asset entity)
         {
-            throw new NotImplementedException();
+            _context.Assets.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         public void Delete(Asset entity)
@@ -64,12 +66,16 @@ namespace RentMyStuff.Services
 
         public Asset Update(Asset entity)
         {
-            throw new NotImplementedException();
+            _context.Assets.Update(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
-        public Task<Asset> UpdateAsync(Asset entity)
+        public async Task<Asset> UpdateAsync(Asset entity)
         {
-            throw new NotImplementedException();
+            _context.Assets.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }

@@ -13,7 +13,10 @@ namespace RentMyStuff.Web
         public MappingProfile()
         {
             CreateMap<Asset, AssetDto>();
+            CreateMap<AssetType, AssetTypeDto>();
+
             CreateMap<AssetDto, Asset>().ForMember(x => x.Id, opt => opt.Ignore());
+            CreateMap<AssetTypeDto, AssetType>().ForMember(x => x.Id, opt => opt.Ignore());
         }
     }
 }
