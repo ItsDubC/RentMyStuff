@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentMyStuff.Web.ViewModels
 {
-    public class CreateAssetViewModel
+    public class AssetFormViewModel
     {
         public IEnumerable<AssetType> AssetTypes { get; set; }
         public Asset Asset { get; set; }

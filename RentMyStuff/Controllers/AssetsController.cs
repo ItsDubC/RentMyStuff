@@ -10,6 +10,7 @@ using RentMyStuff.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using RentMyStuff.Core.Dtos;
+using RentMyStuff.Web.ViewModels;
 
 namespace RentMyStuff.Web.Controllers
 {
