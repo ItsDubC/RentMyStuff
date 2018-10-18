@@ -12,11 +12,11 @@ namespace RentMyStuff.Web
     {
         public MappingProfile()
         {
-            CreateMap<Asset, AssetDto>();
-            CreateMap<AssetType, AssetTypeDto>();
+            CreateMap<Asset, AssetDto>().ReverseMap();
+            CreateMap<AssetType, AssetTypeDto>().ReverseMap();
 
-            CreateMap<AssetDto, Asset>().ForMember(x => x.Id, opt => opt.Ignore());
-            CreateMap<AssetTypeDto, AssetType>().ForMember(x => x.Id, opt => opt.Ignore());
+            //CreateMap<AssetDto, Asset>().ForMember(x => x.Id, opt => opt.Ignore());
+            //CreateMap<AssetTypeDto, AssetType>().ForMember(x => x.Id, opt => opt.Ignore());
         }
     }
 }

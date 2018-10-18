@@ -17,6 +17,7 @@ using RentMyStuff.Services.Interfaces;
 using RentMyStuff.Core.Models;
 using RentMyStuff.Services;
 using RentMyStuff.Data.Interfaces;
+using RentMyStuff.Web;
 
 namespace RentMyStuff
 {
@@ -46,6 +47,14 @@ namespace RentMyStuff
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAutoMapper();
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new MappingProfile());
+            //});
+
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IDbContext, ApplicationDbContext>();

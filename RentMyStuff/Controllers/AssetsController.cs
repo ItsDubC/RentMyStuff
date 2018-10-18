@@ -16,11 +16,13 @@ namespace RentMyStuff.Web.Controllers
 {
     public class AssetsController : Controller
     {
+        private IMapper _autoMapper;
         private IService<Asset> _assetService;
 		private IService<AssetType> _assetTypeService;
 
-		public AssetsController(IService<Asset> assetService, IService<AssetType> assetTypeService)
+		public AssetsController(IMapper autoMapper, IService<Asset> assetService, IService<AssetType> assetTypeService)
         {
+            _autoMapper = autoMapper;
             _assetService = assetService;
 			_assetTypeService = assetTypeService;
 		}
@@ -28,7 +30,7 @@ namespace RentMyStuff.Web.Controllers
         // GET: Assets
         public ViewResult Index()
         {
-            var assetDtos = _assetService.GetAll().Select(Mapper.Map<Asset, AssetDto>);
+            var assetDtos = _assetService.GetAll().Select(_autoMapper.Map<Asset, AssetDto>);
             return View(assetDtos);
         }
 
@@ -45,7 +47,7 @@ namespace RentMyStuff.Web.Controllers
 
 			var viewModel = new AssetFormViewModel()
 			{
-				AssetTypes = assetTypes.Select(Mapper.Map<AssetType, AssetTypeDto>),
+				AssetTypes = assetTypes.Select(_autoMapper.Map<AssetType, AssetTypeDto>),
 				Asset = new AssetDto()
 			};
 
@@ -61,7 +63,7 @@ namespace RentMyStuff.Web.Controllers
             {
                 var viewModel = new AssetFormViewModel
                 {
-                    AssetTypes = _assetTypeService.GetAll().Select(Mapper.Map<AssetType, AssetTypeDto>),
+                    AssetTypes = _assetTypeService.GetAll().Select(_autoMapper.Map<AssetType, AssetTypeDto>),
                     Asset = assetDto
                 };
 
@@ -74,7 +76,7 @@ namespace RentMyStuff.Web.Controllers
                 {
                     assetDto.NumberAvailable = assetDto.NumberInStock;
 
-                    _assetService.Add(Mapper.Map<AssetDto, Asset>(assetDto));
+                    _assetService.Add(_autoMapper.Map<AssetDto, Asset>(assetDto));
                 }
                 else
                 {
