@@ -88,7 +88,6 @@ namespace RentMyStuff.Web.Controllers
                     assetInDb.NumberInStock = assetDto.NumberInStock;
                 }
 
-
                 return RedirectToAction(nameof(Index));
             }
             catch

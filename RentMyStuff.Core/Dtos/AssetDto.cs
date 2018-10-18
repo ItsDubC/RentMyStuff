@@ -17,13 +17,18 @@ namespace RentMyStuff.Core.Dtos
         public string Description { get; set; }
 
         [Required]
+		[Display(Name = "Type")]
         public byte AssetTypeId { get; set; }
 
         public AssetTypeDto AssetType { get; set; }
 
         [Required]
-        public int NumberInStock { get; set; }
+		[Display(Name = "Number in Stock")]
+		[Range(0, 256)]
+		public int NumberInStock { get; set; }
 
-        public int NumberAvailable { get; set; }
+		[Display(Name = "Number Available")]
+		[Range(0, 256)]
+		public int NumberAvailable { get; set; }
     }
 }
