@@ -10,37 +10,37 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Save" asp-antiforgery="true">
+        <form asp-action="Save" asp-antiforgery="true" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
-				<label asp-for="Asset.Name" class="control-label"></label>
-				<input asp-for="Asset.Name" class="form-control" />
-				<span asp-validation-for="Asset.Name" class="text-danger"></span>
+				<label asp-for="Name" class="control-label"></label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
 			</div>
             <div class="form-group">
-                <label asp-for="Asset.Description" class="control-label"></label>
-                <input asp-for="Asset.Description" class="form-control" />
-                <span asp-validation-for="Asset.Description" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Asset.AssetTypeId" class="control-label"></label>
+                <label asp-for="AssetTypeId" class="control-label"></label>
                 @*<input asp-for="AssetTypeId" class="form-control" />*@
-				<select asp-for="Asset.AssetTypeId" asp-items="@(new SelectList(Model.AssetTypes, "Id", "Name"))" class="form-control"></select>
-                <span asp-validation-for="Asset.AssetTypeId" class="text-danger"></span>
+				<select asp-for="AssetTypeId" asp-items="@(new SelectList(Model.AssetTypes, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="AssetTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Asset.NumberInStock" class="control-label"></label>
-                <input asp-for="Asset.NumberInStock" class="form-control" />
-                <span asp-validation-for="Asset.NumberInStock" class="text-danger"></span>
+                <label asp-for="NumberInStock" class="control-label"></label>
+                <input asp-for="NumberInStock" class="form-control" />
+                <span asp-validation-for="NumberInStock" class="text-danger"></span>
             </div>
             @*<div class="form-group">
                 <label asp-for="NumberAvailable" class="control-label"></label>
                 <input asp-for="NumberAvailable" class="form-control" />
                 <span asp-validation-for="NumberAvailable" class="text-danger"></span>
             </div>*@
-			<input hidden asp-for="Asset.Id" />
+			<input hidden asp-for="Id" />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>

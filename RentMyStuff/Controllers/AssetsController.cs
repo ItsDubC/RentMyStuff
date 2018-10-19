@@ -48,7 +48,7 @@ namespace RentMyStuff.Web.Controllers
 			var viewModel = new AssetFormViewModel()
 			{
 				AssetTypes = assetTypes.Select(_autoMapper.Map<AssetType, AssetTypeDto>),
-				Asset = new AssetDto()
+				//Asset = new AssetDto()
 			};
 
             return View(viewModel);
@@ -64,7 +64,7 @@ namespace RentMyStuff.Web.Controllers
                 var viewModel = new AssetFormViewModel
                 {
                     AssetTypes = _assetTypeService.GetAll().Select(_autoMapper.Map<AssetType, AssetTypeDto>),
-                    Asset = assetDto
+                    //Asset = assetDto
                 };
 
                 return View("Create", viewModel);
