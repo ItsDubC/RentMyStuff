@@ -37,7 +37,12 @@ namespace RentMyStuff.Web.Controllers
         // GET: Assets/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AssetDto assetDto = _autoMapper.Map<Asset, AssetDto>(_assetService.GetById(id));
+
+            if (assetDto == null)
+                return NotFound();
+
+            return View(assetDto);
         }
 
         // GET: Assets/Create
@@ -99,7 +104,12 @@ namespace RentMyStuff.Web.Controllers
         // GET: Assets/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            AssetDto assetDto = _autoMapper.Map<Asset, AssetDto>(_assetService.GetById(id));
+
+            if (assetDto == null)
+                return NotFound();
+
+            return View(assetDto);
         }
 
         // POST: Assets/Edit/5
